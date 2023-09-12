@@ -63,7 +63,8 @@ def start_matlab_proxy_for_testing():
 
     # '127.0.0.1' is used instead 'localhost' for testing since Windows machines consume
     # some time to resolve 'localhost' hostname
-    url = "{protocol}://127.0.0.1:{port}{base_url}".format(
+    # Modified to 0.0.0.0 for dockernel use
+    url = "{protocol}://0.0.0.0:{port}{base_url}".format(
         protocol="http",
         port=matlab_proxy_app_port,
         base_url=matlab_proxy_base_url,
@@ -150,7 +151,8 @@ def start_matlab_proxy():
             """
         )
 
-    url = "{protocol}://localhost:{port}{base_url}matlab".format(
+    # Modified from localhost to 0.0.0.0 for dockernel use
+    url = "{protocol}://0.0.0.0:{port}{base_url}matlab".format(
         protocol="https" if nb_server["secure"] else "http",
         port=nb_server["port"],
         base_url=nb_server["base_url"],
